@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "2bba845fbce108b1d355",
+  "position": {
+    "x": 20,
+    "y": 720,
+    "z": 5,
+    "height": 340,
+    "width": 600,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Producto Mayor Caida"
+                }
+              },
+              "queryRef": "dim_formulas.Producto Mayor Caida",
+              "nativeQueryRef": "Producto Mayor Caida"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_formulas"
+                  }
+                },
+                "Property": "Producto Mayor Caida"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "78c4917ad48176ed7be6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Producto Mayor Caida"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "12a07523f1d09bd90e90",
+  "position": {
+    "x": 660,
+    "y": 540,
+    "z": 3,
+    "height": 500,
+    "width": 620,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "testia dim_branch"
+                    }
+                  },
+                  "Property": "region"
+                }
+              },
+              "queryRef": "testia dim_branch.region",
+              "nativeQueryRef": "region",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Variacion MoM Ref"
+                }
+              },
+              "queryRef": "dim_formulas.Variacion MoM Ref",
+              "nativeQueryRef": "Variacion MoM Ref"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_formulas"
+                  }
+                },
+                "Property": "Variacion MoM Ref"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "34e38b28a42becc39085",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "testia dim_branch"
+              }
+            },
+            "Property": "region"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5a417ed036e3938a82c3",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Variacion MoM Ref"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

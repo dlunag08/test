@@ -58,6 +58,76 @@ table dim_formulas
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Fecha Ref' = VAR UltimaClaveFecha = CALCULATE ( MAX ( 'testia fact_sales'[date_key] ), ALL ( 'testia fact_sales' ) ) RETURN CALCULATE ( MAX ( 'testia dim_date'[full_date] ), ALL ( 'testia dim_date' ), 'testia dim_date'[date_key] = UltimaClaveFecha )
+		formatString: Long Date
+		lineageTag: 6987675b-db0b-4741-990a-587e75bc4028
+
+	measure 'Ventas Mes Actual' = VAR FechaRef = [Fecha Ref] RETURN CALCULATE ( [Ventas Netas], ALL ( 'testia dim_date' ), YEAR ( 'testia dim_date'[full_date] ) = YEAR ( FechaRef ), MONTH ( 'testia dim_date'[full_date] ) = MONTH ( FechaRef ) )
+		lineageTag: d39ee202-55b8-485d-9f7a-d3b56ab34b18
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ventas Mes Anterior Ref' = VAR FechaRef = [Fecha Ref] VAR FechaAnterior = EDATE ( FechaRef, -1 ) RETURN CALCULATE ( [Ventas Netas], ALL ( 'testia dim_date' ), YEAR ( 'testia dim_date'[full_date] ) = YEAR ( FechaAnterior ), MONTH ( 'testia dim_date'[full_date] ) = MONTH ( FechaAnterior ) )
+		lineageTag: 0176ee17-d24e-44ca-8b10-7c66357d22d4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Variacion MoM Ref' = [Ventas Mes Actual] - [Ventas Mes Anterior Ref]
+		lineageTag: 18e51f24-aa79-4f8a-99d2-1ba7c05b0e09
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Variacion MoM % Ref' = DIVIDE ( [Variacion MoM Ref], [Ventas Mes Anterior Ref] )
+		formatString: 0.0%
+		lineageTag: cb5309e3-91c1-44e2-b03d-033639a04c26
+
+	measure 'Ventas Prom 3M Ref' = VAR FechaRef = [Fecha Ref] VAR FinBase = EOMONTH ( FechaRef, -1 ) VAR InicioBase = EOMONTH ( FechaRef, -4 ) + 1 VAR MesesTabla = SUMMARIZE ( FILTER ( ALL ( 'testia dim_date' ), 'testia dim_date'[full_date] >= InicioBase && 'testia dim_date'[full_date] <= FinBase ), 'testia dim_date'[year_number], 'testia dim_date'[month_number] ) RETURN AVERAGEX ( MesesTabla, CALCULATE ( [Ventas Netas] ) )
+		lineageTag: bacd7d31-b48e-48a1-8362-63a5be27be65
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ventas Desv 3M Ref' = VAR FechaRef = [Fecha Ref] VAR FinBase = EOMONTH ( FechaRef, -1 ) VAR InicioBase = EOMONTH ( FechaRef, -4 ) + 1 VAR MesesTabla = SUMMARIZE ( FILTER ( ALL ( 'testia dim_date' ), 'testia dim_date'[full_date] >= InicioBase && 'testia dim_date'[full_date] <= FinBase ), 'testia dim_date'[year_number], 'testia dim_date'[month_number] ) RETURN STDEVX.P ( MesesTabla, CALCULATE ( [Ventas Netas] ) )
+		lineageTag: 4fec3f02-a5dc-4809-aa79-bc8073c908b3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ventas Z-Score Mes Actual' = DIVIDE ( [Ventas Mes Actual] - [Ventas Prom 3M Ref], [Ventas Desv 3M Ref] )
+		formatString: 0.00
+		lineageTag: 45b6cf84-250b-4153-b223-2dd0b647247f
+
+	measure 'Anomalia Mes Actual' = VAR Z = [Ventas Z-Score Mes Actual] RETURN SWITCH ( TRUE (), ISBLANK ( Z ), "Sin datos suficientes", Z >= 1.5, "Pico atipico", Z <= -1.5, "Caida atipica", "Normal" )
+		lineageTag: 3dfe218b-e34f-489e-b9d4-4d7b9c1ca1bb
+
+	measure 'Ventas Prom 3M Mensual' = VAR FechaEval = MAX ( 'testia dim_date'[full_date] ) VAR FinBase = EOMONTH ( FechaEval, -1 ) VAR InicioBase = EOMONTH ( FechaEval, -4 ) + 1 VAR MesesTabla = SUMMARIZE ( FILTER ( ALL ( 'testia dim_date' ), 'testia dim_date'[full_date] >= InicioBase && 'testia dim_date'[full_date] <= FinBase ), 'testia dim_date'[year_number], 'testia dim_date'[month_number] ) RETURN AVERAGEX ( MesesTabla, CALCULATE ( [Ventas Netas] ) )
+		lineageTag: 754ef0b1-bda4-447b-933f-3c2fcc07ab05
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ventas Desv 3M Mensual' = VAR FechaEval = MAX ( 'testia dim_date'[full_date] ) VAR FinBase = EOMONTH ( FechaEval, -1 ) VAR InicioBase = EOMONTH ( FechaEval, -4 ) + 1 VAR MesesTabla = SUMMARIZE ( FILTER ( ALL ( 'testia dim_date' ), 'testia dim_date'[full_date] >= InicioBase && 'testia dim_date'[full_date] <= FinBase ), 'testia dim_date'[year_number], 'testia dim_date'[month_number] ) RETURN STDEVX.P ( MesesTabla, CALCULATE ( [Ventas Netas] ) )
+		lineageTag: 142238fd-5b16-40b3-9b56-21e2dc01c624
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ventas Z-Score Mensual' = DIVIDE ( [Ventas Netas] - [Ventas Prom 3M Mensual], [Ventas Desv 3M Mensual] )
+		formatString: 0.00
+		lineageTag: ee9d51fa-8bf0-4bf7-a6a1-92e4cbc99bc5
+
+	measure 'Anomalia Mensual' = VAR Z = [Ventas Z-Score Mensual] RETURN SWITCH ( TRUE (), ISBLANK ( Z ), BLANK (), Z >= 1.5, "Pico atipico", Z <= -1.5, "Caida atipica", "Normal" )
+		lineageTag: 798e7752-6222-4b72-81ef-7955259ff8ed
+
+	measure 'Cliente Bandera 80%' = IF ( [Pareto %] <= 0.8, "Top 80%", "Resto" )
+		lineageTag: 99c131e4-7a5b-4dce-8bc4-8b78199b457b
+
+	measure 'Clientes en 80%' = CALCULATE ( DISTINCTCOUNT ( 'testia dim_customer'[customer_key] ), FILTER ( ALL ( 'testia dim_customer' ), [Pareto %] <= 0.8 ) )
+		formatString: 0
+		lineageTag: 0de8f009-8d4c-4210-8db5-746136410d91
+
+	measure 'Sucursal Mayor Crecimiento' = VAR TablaSucursales = ADDCOLUMNS ( VALUES ( 'testia dim_branch'[branch_name] ), "Var", [Variacion MoM % Ref] ) VAR Mejor = TOPN ( 1, TablaSucursales, [Var], DESC ) RETURN MAXX ( Mejor, 'testia dim_branch'[branch_name] )
+		lineageTag: 48699e58-ab52-4928-8bc8-e0fe05836ff1
+
+	measure 'Producto Mayor Caida' = VAR TablaProductos = ADDCOLUMNS ( VALUES ( 'testia dim_product'[product_name] ), "Var", [Variacion MoM % Ref] ) VAR Peor = TOPN ( 1, TablaProductos, [Var], ASC ) RETURN MAXX ( Peor, 'testia dim_product'[product_name] )
+		lineageTag: b7f1d516-3209-47eb-8543-dabcbcc8cdb0
+
 	column Value
 		lineageTag: ca51d642-5cac-405d-b76d-7e9b1b704109
 		summarizeBy: none

@@ -1,0 +1,214 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b52054f04f01169a6ebe",
+  "position": {
+    "x": 20,
+    "y": 20,
+    "z": 0,
+    "height": 1040,
+    "width": 940,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "testia dim_product"
+                    }
+                  },
+                  "Property": "product_name"
+                }
+              },
+              "queryRef": "testia dim_product.product_name",
+              "nativeQueryRef": "product_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "testia dim_product"
+                    }
+                  },
+                  "Property": "category"
+                }
+              },
+              "queryRef": "testia dim_product.category",
+              "nativeQueryRef": "category"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Ventas Mes Actual"
+                }
+              },
+              "queryRef": "dim_formulas.Ventas Mes Actual",
+              "nativeQueryRef": "Ventas Mes Actual"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Ventas Mes Anterior Ref"
+                }
+              },
+              "queryRef": "dim_formulas.Ventas Mes Anterior Ref",
+              "nativeQueryRef": "Ventas Mes Anterior Ref"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Variacion MoM Ref"
+                }
+              },
+              "queryRef": "dim_formulas.Variacion MoM Ref",
+              "nativeQueryRef": "Variacion MoM Ref"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Variacion MoM % Ref"
+                }
+              },
+              "queryRef": "dim_formulas.Variacion MoM % Ref",
+              "nativeQueryRef": "Variacion MoM % Ref"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_formulas"
+                  }
+                },
+                "Property": "Variacion MoM % Ref"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "3822d5d2b163ae5fa3e7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "testia dim_product"
+              }
+            },
+            "Property": "product_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "fea887f1cdf4b89ad4cf",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "testia dim_product"
+              }
+            },
+            "Property": "category"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1bd48c3943a98083d667",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Ventas Mes Actual"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8a98eeaa94d27813dc42",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Ventas Mes Anterior Ref"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9379485fad2fbeb30032",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Variacion MoM Ref"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7474038b8ba154aa1ba7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Variacion MoM % Ref"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

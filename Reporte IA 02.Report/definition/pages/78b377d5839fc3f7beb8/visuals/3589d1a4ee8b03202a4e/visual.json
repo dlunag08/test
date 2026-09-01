@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "3589d1a4ee8b03202a4e",
+  "position": {
+    "x": 1260,
+    "y": 720,
+    "z": 7,
+    "height": 340,
+    "width": 580,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Clientes en 80%"
+                }
+              },
+              "queryRef": "dim_formulas.Clientes en 80%",
+              "nativeQueryRef": "Clientes en 80%"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_formulas"
+                  }
+                },
+                "Property": "Clientes en 80%"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7f7b7b66314affa88302",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Clientes en 80%"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

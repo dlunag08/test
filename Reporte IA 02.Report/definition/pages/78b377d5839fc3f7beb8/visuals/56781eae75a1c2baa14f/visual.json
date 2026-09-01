@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "56781eae75a1c2baa14f",
+  "position": {
+    "x": 640,
+    "y": 720,
+    "z": 6,
+    "height": 340,
+    "width": 600,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Sucursal Mayor Crecimiento"
+                }
+              },
+              "queryRef": "dim_formulas.Sucursal Mayor Crecimiento",
+              "nativeQueryRef": "Sucursal Mayor Crecimiento"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_formulas"
+                  }
+                },
+                "Property": "Sucursal Mayor Crecimiento"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d85fac94962f2f82deb2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Sucursal Mayor Crecimiento"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

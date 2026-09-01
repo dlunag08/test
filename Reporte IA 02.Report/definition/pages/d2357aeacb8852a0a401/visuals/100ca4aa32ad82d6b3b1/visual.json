@@ -1,0 +1,186 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "100ca4aa32ad82d6b3b1",
+  "position": {
+    "x": 1220,
+    "y": 20,
+    "z": 1,
+    "height": 500,
+    "width": 680,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "testia dim_date"
+                    }
+                  },
+                  "Property": "year_month"
+                }
+              },
+              "queryRef": "testia dim_date.year_month",
+              "nativeQueryRef": "year_month"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Ventas Netas"
+                }
+              },
+              "queryRef": "dim_formulas.Ventas Netas",
+              "nativeQueryRef": "Ventas Netas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Ventas Prom 3M Mensual"
+                }
+              },
+              "queryRef": "dim_formulas.Ventas Prom 3M Mensual",
+              "nativeQueryRef": "Ventas Prom 3M Mensual"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Ventas Z-Score Mensual"
+                }
+              },
+              "queryRef": "dim_formulas.Ventas Z-Score Mensual",
+              "nativeQueryRef": "Ventas Z-Score Mensual"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Anomalia Mensual"
+                }
+              },
+              "queryRef": "dim_formulas.Anomalia Mensual",
+              "nativeQueryRef": "Anomalia Mensual"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "testia dim_date"
+                  }
+                },
+                "Property": "year_month"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "491587cee817ae5f52af",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "testia dim_date"
+              }
+            },
+            "Property": "year_month"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f299686b5a6cd1210059",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Ventas Netas"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "aaf20f596b316c9258b7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Ventas Prom 3M Mensual"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "85baa59ab2703bd765b3",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Ventas Z-Score Mensual"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "713c6a287d3d937ed9d7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Anomalia Mensual"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

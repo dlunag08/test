@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Reporte IA 02"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "374eefda-e875-4d0d-bcd0-ec89c7a346db"
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "523ef5c62da794dc6017",
+  "position": {
+    "x": 20,
+    "y": 20,
+    "z": 0,
+    "height": 1040,
+    "width": 1560,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "testia dim_customer"
+                    }
+                  },
+                  "Property": "customer_name"
+                }
+              },
+              "queryRef": "testia dim_customer.customer_name",
+              "nativeQueryRef": "customer_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "testia dim_customer"
+                    }
+                  },
+                  "Property": "segment"
+                }
+              },
+              "queryRef": "testia dim_customer.segment",
+              "nativeQueryRef": "segment"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Ventas Netas"
+                }
+              },
+              "queryRef": "dim_formulas.Ventas Netas",
+              "nativeQueryRef": "Ventas Netas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Ranking Cliente"
+                }
+              },
+              "queryRef": "dim_formulas.Ranking Cliente",
+              "nativeQueryRef": "Ranking Cliente"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Pareto %"
+                }
+              },
+              "queryRef": "dim_formulas.Pareto %",
+              "nativeQueryRef": "Pareto %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Cliente Bandera 80%"
+                }
+              },
+              "queryRef": "dim_formulas.Cliente Bandera 80%",
+              "nativeQueryRef": "Cliente Bandera 80%"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_formulas"
+                  }
+                },
+                "Property": "Ventas Netas"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "898399a4900830b328aa",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "testia dim_customer"
+              }
+            },
+            "Property": "customer_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6dba59356469598b010b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "testia dim_customer"
+              }
+            },
+            "Property": "segment"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "30d0fe6ba8a21be48095",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Ventas Netas"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c0c401fb0bb558e7f46e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Ranking Cliente"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f6ee7b92f7a91bfd01ad",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Pareto %"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a45397ed980c4ce5cafb",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Cliente Bandera 80%"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

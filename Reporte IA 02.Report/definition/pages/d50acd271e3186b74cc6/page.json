@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "d50acd271e3186b74cc6",
+  "displayName": "2. Clientes y Pareto 80%",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920
+}

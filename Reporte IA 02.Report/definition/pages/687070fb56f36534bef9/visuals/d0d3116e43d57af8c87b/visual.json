@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d0d3116e43d57af8c87b",
+  "position": {
+    "x": 980,
+    "y": 20,
+    "z": 1,
+    "height": 1040,
+    "width": 920,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "testia dim_branch"
+                    }
+                  },
+                  "Property": "branch_name"
+                }
+              },
+              "queryRef": "testia dim_branch.branch_name",
+              "nativeQueryRef": "branch_name",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Variacion MoM % Ref"
+                }
+              },
+              "queryRef": "dim_formulas.Variacion MoM % Ref",
+              "nativeQueryRef": "Variacion MoM % Ref"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_formulas"
+                  }
+                },
+                "Property": "Variacion MoM % Ref"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1551830a20778071643c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "testia dim_branch"
+              }
+            },
+            "Property": "branch_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "061dcb84ac98cea780c9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Variacion MoM % Ref"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
