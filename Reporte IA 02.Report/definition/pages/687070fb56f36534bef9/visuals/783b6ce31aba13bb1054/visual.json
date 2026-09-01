@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "bc9c7f4e559de98ac680",
+  "name": "783b6ce31aba13bb1054",
   "position": {
-    "x": 1300,
-    "y": 540,
-    "z": 4,
-    "height": 500,
+    "x": 660,
+    "y": 20,
+    "z": 1,
+    "height": 1040,
     "width": 600,
-    "tabOrder": 4
+    "tabOrder": 1
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "testia dim_customer"
+                      "Entity": "testia dim_product"
                     }
                   },
-                  "Property": "segment"
+                  "Property": "product_name"
                 }
               },
-              "queryRef": "testia dim_customer.segment",
-              "nativeQueryRef": "segment",
+              "queryRef": "testia dim_product.product_name",
+              "nativeQueryRef": "product_name",
               "active": true
             }
           ]
@@ -64,7 +64,7 @@
                 "Property": "Variacion MoM Ref"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ],
         "isDefaultSort": true
@@ -92,21 +92,21 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "a8b0f186cc79232d4224",
+        "name": "11d9b14800f1d8e8e525",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "testia dim_customer"
+                "Entity": "testia dim_product"
               }
             },
-            "Property": "segment"
+            "Property": "product_name"
           }
         },
         "type": "Categorical"
       },
       {
-        "name": "89191b4d7e53818dfe55",
+        "name": "06ee45e6f71d2c9ecc90",
         "field": {
           "Measure": {
             "Expression": {

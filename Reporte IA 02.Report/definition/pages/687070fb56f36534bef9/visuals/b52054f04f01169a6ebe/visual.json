@@ -6,7 +6,7 @@
     "y": 20,
     "z": 0,
     "height": 1040,
-    "width": 940,
+    "width": 620,
     "tabOrder": 0
   },
   "visual": {
@@ -120,6 +120,23 @@
         ],
         "isDefaultSort": true
       }
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "color": { "solid": { "color": { "expr": { "Literal": { "Value": "'#E1E1E1'" } } } } }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   },

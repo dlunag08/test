@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
-  "name": "bc9c7f4e559de98ac680",
+  "name": "79519498feb6d8f43e42",
   "position": {
-    "x": 1300,
-    "y": 540,
-    "z": 4,
-    "height": 500,
-    "width": 600,
-    "tabOrder": 4
+    "x": 940,
+    "y": 20,
+    "z": 2,
+    "height": 1040,
+    "width": 960,
+    "tabOrder": 2
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "lineClusteredColumnComboChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,11 +23,11 @@
                       "Entity": "testia dim_customer"
                     }
                   },
-                  "Property": "segment"
+                  "Property": "customer_name"
                 }
               },
-              "queryRef": "testia dim_customer.segment",
-              "nativeQueryRef": "segment",
+              "queryRef": "testia dim_customer.customer_name",
+              "nativeQueryRef": "customer_name",
               "active": true
             }
           ]
@@ -42,11 +42,29 @@
                       "Entity": "dim_formulas"
                     }
                   },
-                  "Property": "Variacion MoM Ref"
+                  "Property": "Ventas Netas"
                 }
               },
-              "queryRef": "dim_formulas.Variacion MoM Ref",
-              "nativeQueryRef": "Variacion MoM Ref"
+              "queryRef": "dim_formulas.Ventas Netas",
+              "nativeQueryRef": "Ventas Netas"
+            }
+          ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_formulas"
+                    }
+                  },
+                  "Property": "Pareto %"
+                }
+              },
+              "queryRef": "dim_formulas.Pareto %",
+              "nativeQueryRef": "Pareto %"
             }
           ]
         }
@@ -61,7 +79,7 @@
                     "Entity": "dim_formulas"
                   }
                 },
-                "Property": "Variacion MoM Ref"
+                "Property": "Ventas Netas"
               }
             },
             "direction": "Descending"
@@ -92,7 +110,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "a8b0f186cc79232d4224",
+        "name": "87472eae755dcf79c411",
         "field": {
           "Column": {
             "Expression": {
@@ -100,13 +118,13 @@
                 "Entity": "testia dim_customer"
               }
             },
-            "Property": "segment"
+            "Property": "customer_name"
           }
         },
         "type": "Categorical"
       },
       {
-        "name": "89191b4d7e53818dfe55",
+        "name": "1d04daf527f7f4c7d2fb",
         "field": {
           "Measure": {
             "Expression": {
@@ -114,7 +132,21 @@
                 "Entity": "dim_formulas"
               }
             },
-            "Property": "Variacion MoM Ref"
+            "Property": "Ventas Netas"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "93818ec1871454bacbe6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_formulas"
+              }
+            },
+            "Property": "Pareto %"
           }
         },
         "type": "Advanced"

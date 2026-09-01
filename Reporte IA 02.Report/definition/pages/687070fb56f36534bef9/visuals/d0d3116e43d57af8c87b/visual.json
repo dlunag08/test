@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "d0d3116e43d57af8c87b",
   "position": {
-    "x": 980,
+    "x": 1280,
     "y": 20,
-    "z": 1,
+    "z": 2,
     "height": 1040,
-    "width": 920,
-    "tabOrder": 1
+    "width": 620,
+    "tabOrder": 2
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -69,6 +69,23 @@
         ],
         "isDefaultSort": true
       }
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } },
+            "color": { "solid": { "color": { "expr": { "Literal": { "Value": "'#E1E1E1'" } } } } }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": { "expr": { "Literal": { "Value": "true" } } }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   },
