@@ -1,0 +1,64 @@
+table 'testia dim_customer'
+	lineageTag: c6686e92-470d-4722-b966-82b919fab6c0
+
+	column customer_key
+		dataType: int64
+		formatString: 0
+		lineageTag: fcd90a53-0968-4873-869a-1e1fdb56b1f4
+		summarizeBy: none
+		sourceColumn: customer_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_code
+		dataType: string
+		lineageTag: a88c2c9c-084f-4be1-8cdc-736f4693ad29
+		summarizeBy: none
+		sourceColumn: customer_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		lineageTag: 38d36693-7848-4cbe-8f71-daf6a2a506bc
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		lineageTag: 99bcd93a-3ecb-4dd0-b493-3391847ccd8b
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column province
+		dataType: string
+		lineageTag: d7d7b0ef-679c-49ab-9a3d-fb8c3c54117d
+		summarizeBy: none
+		sourceColumn: province
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 77465666-5867-401c-b659-9f1524f2e58f
+		summarizeBy: none
+		sourceColumn: active_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'testia dim_customer' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("127.0.0.1:15432", "bi"),
+				  #"Navigation 1" = Source{[Schema = "testia", Item = "dim_customer"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+

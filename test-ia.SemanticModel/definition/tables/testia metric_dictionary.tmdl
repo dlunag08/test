@@ -1,0 +1,60 @@
+table 'testia metric_dictionary'
+	lineageTag: 01d0b329-7582-4858-9ea3-04afe4d66eba
+
+	column metric_code
+		dataType: string
+		lineageTag: 106bd99c-21fe-4912-b3d5-8df4e59f9669
+		summarizeBy: none
+		sourceColumn: metric_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column metric_name
+		dataType: string
+		lineageTag: 59f24df3-e719-4f06-afef-bca177d0ed69
+		summarizeBy: none
+		sourceColumn: metric_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_definition
+		dataType: string
+		lineageTag: 61ced57a-001a-4fca-8113-0e1f0d1d06d1
+		summarizeBy: none
+		sourceColumn: business_definition
+
+		annotation SummarizationSetBy = Automatic
+
+	column sql_expression
+		dataType: string
+		lineageTag: 38f46ccc-28e5-4830-a601-02fb42185b98
+		summarizeBy: none
+		sourceColumn: sql_expression
+
+		annotation SummarizationSetBy = Automatic
+
+	column aggregation_rule
+		dataType: string
+		lineageTag: 6ba01296-7d08-4417-9a1a-f1176e4fd8e9
+		summarizeBy: none
+		sourceColumn: aggregation_rule
+
+		annotation SummarizationSetBy = Automatic
+
+	column notes
+		dataType: string
+		lineageTag: 55600522-b5d6-4791-a597-422e7cbcbdac
+		summarizeBy: none
+		sourceColumn: notes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'testia metric_dictionary' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("127.0.0.1:15432", "bi"),
+				  #"Navigation 1" = Source{[Schema = "testia", Item = "metric_dictionary"]}[Data]
+				in
+				  #"Navigation 1"
+

@@ -1,0 +1,139 @@
+table 'testia fact_sales'
+	lineageTag: 10699434-0508-4c01-887c-8b140216815f
+
+	column sale_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d485c3d-b808-4861-9603-6dd9feaff197
+		summarizeBy: sum
+		sourceColumn: sale_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: b3d77bdf-8106-4bee-8b54-b5d4ed3b7a9d
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a4fc24c-290b-4b39-9d06-eb9d0905f1ad
+		summarizeBy: none
+		sourceColumn: customer_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 332ca1b1-3ee9-4814-8542-f5701a543b16
+		summarizeBy: none
+		sourceColumn: product_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column branch_key
+		dataType: int64
+		formatString: 0
+		lineageTag: d1eecf03-9b45-430c-952a-ea48dd25b3bf
+		summarizeBy: none
+		sourceColumn: branch_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: ac22adcb-c47a-4f90-b2c5-5d63ce012e4a
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column gross_amount
+		dataType: double
+		lineageTag: ec05a73f-9c99-4238-9be7-ba7e46caa4b4
+		summarizeBy: sum
+		sourceColumn: gross_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column discount_amount
+		dataType: double
+		lineageTag: 39b5e5e0-d6de-478f-9209-1cc97b20e9aa
+		summarizeBy: sum
+		sourceColumn: discount_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_amount
+		dataType: double
+		lineageTag: 9c1bb8e5-f903-4863-a102-39f525183d3f
+		summarizeBy: sum
+		sourceColumn: net_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cost_amount
+		dataType: double
+		lineageTag: 73a8a2b2-160c-4f7c-8d88-be717c81e310
+		summarizeBy: sum
+		sourceColumn: cost_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column margin_amount
+		dataType: double
+		lineageTag: 91b99e82-f311-4aa9-9b8b-802b578120d9
+		summarizeBy: sum
+		sourceColumn: margin_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column transaction_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 120a0fc0-5f11-46ee-85b5-0b4c25cb321e
+		summarizeBy: sum
+		sourceColumn: transaction_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column loaded_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: cced148c-32a9-4a65-8fc5-49ac2cce3ede
+		summarizeBy: none
+		sourceColumn: loaded_at
+
+		variation Variation
+			isDefault
+			relationship: 2b8a9dfa-5952-4eda-9b56-fb8dc331051f
+			defaultHierarchy: LocalDateTable_2295a0f8-2b13-4b8c-a306-76d4cfb977f0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'testia fact_sales' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("127.0.0.1:15432", "bi"),
+				  #"Navigation 1" = Source{[Schema = "testia", Item = "fact_sales"]}[Data]
+				in
+				  #"Navigation 1"
+

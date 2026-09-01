@@ -1,0 +1,26 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["testia dim_branch","testia dim_customer","testia dim_date","testia dim_product","testia fact_sales","testia metric_dictionary","testia semantic_questions"]
+
+annotation PBI_ProTooling = ["WebModelingEdit","DaxQueryView_Desktop"]
+
+ref table 'testia dim_branch'
+ref table 'testia dim_customer'
+ref table 'testia dim_date'
+ref table DateTableTemplate_dc20a80d-2094-43a6-b583-4e7c2f2a9fb0
+ref table LocalDateTable_754ddee7-09d4-4d7d-acba-92e9b8ec736c
+ref table 'testia dim_product'
+ref table 'testia fact_sales'
+ref table LocalDateTable_2295a0f8-2b13-4b8c-a306-76d4cfb977f0
+ref table 'testia metric_dictionary'
+ref table 'testia semantic_questions'
+ref table dim_formulas
+

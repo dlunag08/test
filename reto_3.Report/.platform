@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "reto_3"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8be380a6-fb28-a451-4443-8f1b4dc09b9e"
+  }
+}

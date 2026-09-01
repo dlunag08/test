@@ -1,0 +1,74 @@
+table dim_formulas
+	lineageTag: 5e63ce98-379b-4f40-b7a9-dbd31e229a44
+
+	measure 'Ventas Netas' = SUM('testia fact_sales'[net_amount])
+		lineageTag: 941923c8-ba56-4f8d-a710-d0fd8acb0cec
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pareto %' = DIVIDE([Ventas Acumuladas Cliente], CALCULATE([Ventas Netas], ALL('testia dim_customer')))
+		lineageTag: 25cd3eeb-ae5c-405e-bf81-e69cfcf48faa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ranking Cliente' = RANKX(ALL('testia dim_customer'), [Ventas Netas])
+		formatString: 0
+		lineageTag: fe9af744-2ee4-4cf2-87be-681148d1023c
+
+	measure 'Ticket Promedio' = DIVIDE([Ventas Netas], [Transacciones])
+		lineageTag: 16825122-336a-44a4-a00d-6696d74f6149
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Transacciones = SUM('testia fact_sales'[transaction_count])
+		formatString: 0
+		lineageTag: 8804d3ea-ba25-4a46-b478-8baca8e52b2b
+
+	measure Unidades = SUM('testia fact_sales'[quantity])
+		formatString: 0
+		lineageTag: 398e68be-5989-418a-9c6c-14e80ffedd21
+
+	measure Margen = SUM('testia fact_sales'[margin_amount])
+		lineageTag: 6dbf5f41-97ca-4b02-be3d-41eca2c94f2b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Margen %' = DIVIDE([Margen], [Ventas Netas])
+		lineageTag: 671049de-c666-4350-a3fe-e209dbc12b2d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Variacion MoM' = [Ventas Netas] - [Ventas Mes Anterior]
+		lineageTag: bc03c457-9c49-41eb-bffc-cb4bad3573a6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Variacion MoM %' = DIVIDE([Variacion MoM], [Ventas Mes Anterior])
+		lineageTag: ec76d682-4111-40d2-9679-5f9230d034d4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ventas Acumuladas Cliente' = CALCULATE([Ventas Netas], TOPN(RANKX(ALL('testia dim_customer'), [Ventas Netas]), ALL('testia dim_customer'), [Ventas Netas]))
+		lineageTag: ca924d25-9326-48c9-950e-5d071694752e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ventas Mes Anterior' = CALCULATE([Ventas Netas], PREVIOUSMONTH('testia dim_date'[full_date]))
+		lineageTag: cdb1e4b6-607d-4bec-abaf-8ecb64663b2f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Value
+		lineageTag: ca51d642-5cac-405d-b76d-7e9b1b704109
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_formulas = calculated
+		mode: import
+		source = {""}
+
+	annotation PBI_Id = 32d75cf1621a4b59b379b136a82a8bf3
+

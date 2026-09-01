@@ -1,0 +1,117 @@
+table 'testia dim_date'
+	lineageTag: b55bef80-3e66-49c0-897d-9b7d20d70026
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 81c59ad7-3cb3-41e0-bef5-3a73d1ce32d8
+		summarizeBy: none
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column full_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b1cf969e-cb06-430a-84b4-707dcd64477e
+		summarizeBy: none
+		sourceColumn: full_date
+
+		variation Variation
+			isDefault
+			relationship: 988cf2b7-d3e6-45f2-a993-8bba4ebdd3e6
+			defaultHierarchy: LocalDateTable_754ddee7-09d4-4d7d-acba-92e9b8ec736c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 88a1e88a-3224-48a1-9e84-8505b2755cfd
+		summarizeBy: sum
+		sourceColumn: year_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter_number
+		dataType: int64
+		formatString: 0
+		lineageTag: b81c49c6-bf58-4c82-aa5c-9e6e9e5a2a6c
+		summarizeBy: sum
+		sourceColumn: quarter_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 46c9e2a2-8f5b-460f-8d3c-ad8a7a086918
+		summarizeBy: sum
+		sourceColumn: month_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: e877cafd-df34-4b76-8d04-1381a3c45a14
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month
+		dataType: string
+		lineageTag: 75c05836-eaab-4ed5-8208-146183fd0860
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 7da189dd-3282-42a6-bb54-faf4355f975d
+		summarizeBy: sum
+		sourceColumn: week_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_of_month
+		dataType: int64
+		formatString: 0
+		lineageTag: e2792649-725c-4622-bc89-f60c2b8c92ce
+		summarizeBy: sum
+		sourceColumn: day_of_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_name
+		dataType: string
+		lineageTag: 9c7dcc40-e5a8-44b2-a1fb-923cdbfb3a64
+		summarizeBy: none
+		sourceColumn: day_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 01d063ca-537a-4d32-8ba6-2ee12a693a9b
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'testia dim_date' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("127.0.0.1:15432", "bi"),
+				  #"Navigation 1" = Source{[Schema = "testia", Item = "dim_date"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+

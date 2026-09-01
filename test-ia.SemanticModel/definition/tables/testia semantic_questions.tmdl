@@ -1,0 +1,45 @@
+table 'testia semantic_questions'
+	lineageTag: 3f077777-5aaa-4a65-b524-0cea4849c4d2
+
+	column question_id
+		dataType: int64
+		formatString: 0
+		lineageTag: f391fe8b-6d1a-41af-a51e-8784a951d3ec
+		summarizeBy: sum
+		sourceColumn: question_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column difficulty
+		dataType: string
+		lineageTag: 70441418-a61c-4d8f-b252-d5ee2d238909
+		summarizeBy: none
+		sourceColumn: difficulty
+
+		annotation SummarizationSetBy = Automatic
+
+	column business_question
+		dataType: string
+		lineageTag: ba3f2a55-e7a3-47ee-aeb4-10f21a4aae61
+		summarizeBy: none
+		sourceColumn: business_question
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_concept
+		dataType: string
+		lineageTag: 819c22c5-3646-4b0a-a2bc-0af75b7b093d
+		summarizeBy: none
+		sourceColumn: expected_concept
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'testia semantic_questions' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("127.0.0.1:15432", "bi"),
+				  #"Navigation 1" = Source{[Schema = "testia", Item = "semantic_questions"]}[Data]
+				in
+				  #"Navigation 1"
+

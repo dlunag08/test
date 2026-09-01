@@ -1,0 +1,26 @@
+relationship 988cf2b7-d3e6-45f2-a993-8bba4ebdd3e6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'testia dim_date'.full_date
+	toColumn: LocalDateTable_754ddee7-09d4-4d7d-acba-92e9b8ec736c.Date
+
+relationship 2b8a9dfa-5952-4eda-9b56-fb8dc331051f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'testia fact_sales'.loaded_at
+	toColumn: LocalDateTable_2295a0f8-2b13-4b8c-a306-76d4cfb977f0.Date
+
+relationship 5b078bca-f5c3-6f34-7c5f-129c4283f267
+	fromColumn: 'testia fact_sales'.date_key
+	toColumn: 'testia dim_date'.date_key
+
+relationship 5e341f3e-6611-65e7-cccc-aa0cfdd4617c
+	fromColumn: 'testia fact_sales'.customer_key
+	toColumn: 'testia dim_customer'.customer_key
+
+relationship fdbebb3f-0899-3e9f-c97a-ccde434cccfa
+	fromColumn: 'testia fact_sales'.product_key
+	toColumn: 'testia dim_product'.product_key
+
+relationship 6f16382d-34b5-39bd-2569-cab39f9dbf36
+	fromColumn: 'testia fact_sales'.branch_key
+	toColumn: 'testia dim_branch'.branch_key
+

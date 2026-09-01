@@ -1,0 +1,55 @@
+table 'testia dim_branch'
+	lineageTag: 57174544-d609-42df-af11-2cac7a15b7cb
+
+	column branch_key
+		dataType: int64
+		formatString: 0
+		lineageTag: 528372dd-acea-41f6-838b-f0252675b04c
+		summarizeBy: none
+		sourceColumn: branch_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column branch_code
+		dataType: string
+		lineageTag: c7a3009d-8d23-489e-875f-b3b96ba3c093
+		summarizeBy: none
+		sourceColumn: branch_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column branch_name
+		dataType: string
+		lineageTag: c1dd8b11-da97-4db4-850c-575442cc14ad
+		summarizeBy: none
+		sourceColumn: branch_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column province
+		dataType: string
+		lineageTag: b7169a49-8bb6-4bab-8460-a25c97273f0f
+		summarizeBy: none
+		sourceColumn: province
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 7f50eaa0-efe7-41bf-8036-436b1eb68611
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'testia dim_branch' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("127.0.0.1:15432", "bi"),
+				  #"Navigation 1" = Source{[Schema = "testia", Item = "dim_branch"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+
